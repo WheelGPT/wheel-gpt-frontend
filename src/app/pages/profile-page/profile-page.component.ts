@@ -30,6 +30,7 @@ export class ProfilePageComponent implements OnInit {
       },
       error: error => {
         console.error(error);
+        this.authenticationService.removeToken();
         this.router.navigate(["/"])
       }
     })
