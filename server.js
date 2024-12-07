@@ -4,11 +4,11 @@ const path = require('node:path');
 const app = express();
 
 // Serve static files from the Angular app
-app.use(express.static(path.join(__dirname, 'dist/wheel-gpt-frontend/browser')));
+app.use(express.static(path.join(__dirname, 'dist/wheelgpt-frontend/browser')));
 
 // Serve the index.html for all GET requests that don't match an existing file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/wheel-gpt-frontend/browser/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/wheelgpt-frontend/browser/index.html'));
 });
 
 // Start the Express server
