@@ -21,7 +21,14 @@ mat-toolbar {
   margin: 0 20%;
   padding: 1rem;
   box-sizing: border-box;
-  min-height: 70vh;
+  min-height: calc(90vh - 64px);
+}
+
+footer {
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 1000px) {
@@ -29,6 +36,5 @@ mat-toolbar {
     width: 100%;
     padding: 10px;
     margin: 0;
-    min-height: 80vh;
   }
 }

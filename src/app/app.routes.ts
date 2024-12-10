@@ -3,6 +3,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { AuthenticationAuthGuard } from './authentication.guard';
 import { RedirectPageComponent } from './pages/redirect-page/redirect-page.component';
+import { PrivacyPolicyPageComponent } from './pages/privacy-policy-page/privacy-policy-page.component';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,11 @@ export const routes: Routes = [
     path: "",
     component: LandingPageComponent,
     title: "WheelGPT: Welcome!",
+  },
+  {
+    path: "privacy",
+    component: PrivacyPolicyPageComponent,
+    title: "WheelGPT: Privacy Policy",
   },
   {
     path: "**",
