@@ -17,8 +17,26 @@ export class AuthenticationService {
     localStorage.setItem("token", token);
   }
 
+  public getProfileImage(): string | null {
+    return localStorage.getItem("profileImage");
+  }
+
+  public setProfileImage(profileImage: string): void {
+    localStorage.setItem("profileImage", profileImage);
+  }
+
+  public getDisplayName(): string | null {
+    return localStorage.getItem("displayName");
+  }
+
+  public setDisplayName(displayName: string): void {
+    localStorage.setItem("displayName", displayName);
+  }
+
   public removeToken(): void {
     localStorage.removeItem("token");
+    localStorage.removeItem("displayName");
+    localStorage.removeItem("profileImage");
   }
 
   public isTokenExpired(): boolean {

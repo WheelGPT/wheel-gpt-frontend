@@ -1,3 +1,30 @@
-<h1>JAA HELLO GUYS MY NAME IS WHEELGPT</h1>
+<div class="container">
+  <div style="text-align: center; color: white">
+    <h1>JAA HELLO GUYS MY NAME IS WHEELGPT</h1>
+    <ul style="list-style-type: none; ">
+      <li>YEKify your stream!</li>
+      <li>Enjoyed by millions of mamas around the world.</li>
+      <li>Also enjoyed by millions enjoyes or mamas around the world.</li>
+    </ul>
+  </div>
 
-<button mat-flat-button (click)="login()">Login via Twitch</button>
+  <button mat-flat-button color="accent" (click)="login()">{{loginText()}}</button>
+
+  <h2 style="text-align: center; color: white">Commands</h2>
+  <div class="commands-list">
+    @for (command of commands(); track command.name) {
+    <mat-card class="command-card" style="color: white">
+      <mat-card-title>{{ command.name }}</mat-card-title>
+      <mat-card-content>
+        <p>{{command.description}}</p>
+        <p>Cooldown: {{ command.cooldown }} seconds</p>
+        <p>Access Level: {{ command.accessLevel }}</p>
+        @if (command.aliases) {
+        <p>Aliases: {{ command.aliases.join(', ') }}</p>
+        }
+
+      </mat-card-content>
+    </mat-card>
+    }
+  </div>
+</div>

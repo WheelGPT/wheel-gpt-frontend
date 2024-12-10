@@ -1,0 +1,25 @@
+.container {
+  margin: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.welcome-card {
+  text-align: center;
+}
+
+.commands-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.command-card {
+  padding: 16px;
+}
+
+.stats {
+  text-align: center;
+  padding: 16px;
+}

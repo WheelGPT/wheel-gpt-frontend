@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, type OnInit, signal } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from "@angular/material/snack-bar";
@@ -6,10 +6,11 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { MatDividerModule } from "@angular/material/divider";
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from '@angular/material/button';
+import { LoadingComponent } from '../../components/loading/loading.component';
 
 @Component({
   selector: 'app-profile-page',
-  imports: [MatDividerModule, MatCardModule, MatButtonModule],
+  imports: [MatDividerModule, MatCardModule, MatButtonModule, LoadingComponent],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.css'
 })
@@ -26,7 +27,7 @@ export class ProfilePageComponent implements OnInit {
   public ngOnInit(): void {
     this.backend.authentication.getToken().subscribe({
       next: response => {
-        this.channelToken.set(response.channelToken)
+        this.channelToken.set(response.channelToken);
       },
       error: error => {
         console.error(error);

@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <span routerLink="/" style="cursor: pointer;">WheelGPT</span>
+  @if (authenticationService.getDisplayName() && authenticationService.getProfileImage()) {
+  <div style="display: flex; align-items: center; cursor: pointer;" routerLink="/profile">
+    <img [src]="authenticationService.getProfileImage()" alt="Profile Image" class="profile-image">
+    <span>{{ authenticationService.getDisplayName() }}</span>
+    <button mat-icon-button (click)="logout()"><mat-icon>logout</mat-icon></button>
+  </div>
+  }
+</mat-toolbar>
+<div class="container">
+  <router-outlet />
+</div>

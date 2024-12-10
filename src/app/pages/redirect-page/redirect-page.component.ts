@@ -1,11 +1,12 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BackendService } from '../../services/backend.service';
 import { AuthenticationService } from '../../services/authentication.service';
+import { LoadingComponent } from "../../components/loading/loading.component";
 
 @Component({
   selector: 'app-redirect-page',
-  imports: [],
+  imports: [LoadingComponent],
   templateUrl: './redirect-page.component.html',
   styleUrl: './redirect-page.component.css'
 })
@@ -18,14 +19,16 @@ export class RedirectPageComponent {
 
   public ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      const code = params['code'];
+      const code = params["code"];
       if (code === null) {
-        this.router.navigate(["/"]);
+        this.redirectToLandingPage();
         return;
       }
       this.backend.authentication.login(code).subscribe({
         next: response => {
           this.authentication.setToken(response.webToken);
+          this.authentication.setDisplayName(response.displayName);
+          this.authentication.setProfileImage(response.profileImage);
           this.router.navigate(["/profile"])
         },
         error: error => {

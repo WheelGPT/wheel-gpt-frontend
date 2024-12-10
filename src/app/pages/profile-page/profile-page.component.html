@@ -1,37 +1,53 @@
 <!-- app.component.html -->
-<h1 class="header">Welcome to WheelGPT</h1>
+<h1 style="color: white; text-align: center;">Welcome to WheelGPT</h1>
 
 <div class="content">
   @if(channelToken() !== null) {
   <div>
     <mat-card class="token-card">
       <mat-card-header>
-        <mat-card-title>Access Token:</mat-card-title>
+        <mat-card-title style="color: white">Access Token</mat-card-title>
       </mat-card-header>
 
       <mat-card-content>
-        <p>Note: Your token will always be different when you visit this page. Previous token are still valid. So if you
+        <p style="color: white">Note: Your token will always be different when you visit this page. Previous token are
+          still valid. So if you
           leaked your token (e.g. on stream) please click "renew Token".</p>
 
         <div class="action-buttons">
-          <button mat-raised-button color="primary" (click)="copyToken()">Copy Token</button>
-          <button mat-raised-button color="accent" (click)="renew()" [disabled]="loading()">Renew Token</button>
-          <button mat-raised-button color="warn" (click)="remove()" [disabled]="loading()">Remove WheelGPT from
+          <button mat-flat-button color="primary" (click)="copyToken()">Copy Token</button>
+          <button mat-flat-button color="accent" (click)="renew()" [disabled]="loading()">Renew Token</button>
+          <button mat-flat-button color="warn" (click)="remove()" [disabled]="loading()">Remove WheelGPT from
             Channel</button>
         </div>
       </mat-card-content>
     </mat-card>
   </div>
+  }@else {
+  <app-loading></app-loading>
   }
 
-  <mat-divider></mat-divider>
-
-  <div class="next-steps">
-    <h2>Next Steps</h2>
-    <ul>
-      <li>Download & install the WheelGPT plugin from OpenPlanet.</li>
-      <li>Go to the settings and set your token!</li>
-      <li>Drive a new best time!</li>
-    </ul>
+  <div class="next-steps" style="color: white; margin-top: 1 rem;">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>🚀 Next Steps</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ol class="steps-list">
+          <li>
+            <strong>Download & Install:</strong> Get the WheelGPT plugin from
+            <a href="https://openplanet.dev/plugin/wheelgpt-plugin" target="_blank">OpenPlanet</a>
+            or the in-game browser by searching for "WheelGPT".
+          </li>
+          <li>
+            <strong>Set Your Token:</strong> Open the OpenPlanet Settings, navigate to WheelGPT, and enter your token to
+            link your account.
+          </li>
+          <li>
+            <strong>Get Ready:</strong> Drive a new best time and let the magic happen!
+          </li>
+        </ol>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

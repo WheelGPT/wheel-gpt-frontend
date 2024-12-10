@@ -1,15 +1,18 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
+import { MatToolbar } from "@angular/material/toolbar";
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MatToolbar, RouterLink, MatButtonModule, MatIconModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  private readonly authenticationService = inject(AuthenticationService);
+  protected readonly authenticationService = inject(AuthenticationService);
   private readonly router = inject(Router);
 
   public ngOnInit(): void {
@@ -17,6 +20,10 @@ export class AppComponent implements OnInit {
       this.authenticationService.removeToken();
       return;
     }
-    this.router.navigate(["/profile"]);
+  }
+
+  protected logout() {
+    this.authenticationService.removeToken();
+    this.router.navigate(["/"]);
   }
 }
